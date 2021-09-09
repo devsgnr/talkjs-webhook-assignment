@@ -81,9 +81,9 @@ exports.addVoters = (req, res) => {
 
       const message = new stmp.Message({
         text: `Your Demo Voting Code: ${data.votingCode}`,
-        from: "エマニュエル <email_address>",
+        from: "<email_address>",
         to: `${data.email}`,
-        subject: ":: Voting Code",
+        subject: "Voting Code",
         attachment: [
           {
             data: `
