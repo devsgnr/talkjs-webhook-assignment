@@ -71,9 +71,9 @@ exports.addVoters = (req, res) => {
     .save()
     .then((data) => {
       const client = new stmp.SMTPClient({
-        user: "devsgnr-demos@outlook.com",
-        password: "devSgnr_9",
-        host: "smtp-mail.outlook.com",
+        user: "<email_address>",
+        password: "<password>",
+        host: "<email_host - eg. smtp-mail.outlook.com>",
         tls: {
           ciphers: "SSLv3",
         },
@@ -81,9 +81,9 @@ exports.addVoters = (req, res) => {
 
       const message = new stmp.Message({
         text: `Your Demo Voting Code: ${data.votingCode}`,
-        from: "エマニュエル <devsgnr-demos@outlook.com>",
+        from: "エマニュエル <email_address>",
         to: `${data.email}`,
-        subject: "エマニュエル - Demo Voting :: Voting Code",
+        subject: ":: Voting Code",
         attachment: [
           {
             data: `
@@ -91,7 +91,7 @@ exports.addVoters = (req, res) => {
             <br/> 
             <p>Check out my <a href="https://devsgnr.xyz" target="_blank">website</a></strong></p>
             <br/><br/>
-            <small style="color:grey;">&copy;${"2077"} Emmanuel Watila.</small>
+            <small style="color:grey;">&copy;${"2077"} <your_name>.</small>
             `,
             alternative: true,
           },
