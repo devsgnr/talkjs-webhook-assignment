@@ -37,9 +37,11 @@ exports.markConversation = (req, res) => {
         .put(conversation_url, custom, config)
         .then((res) => {
           console.log("done");
+          res.send("done");
         })
         .catch((error) => {
           console.log(error);
+          res.send("done");
         });
     } catch (error) {
       console.error(error);
