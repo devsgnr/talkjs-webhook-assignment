@@ -1,9 +1,9 @@
 const axios = require("axios");
 require("dotenv").config();
 
-//Retrieving Candidates Controller
 exports.markConversationAsAnswered = (req, res) => {
   const conversation_id = req.body.data.conversation.id;
+
   let config = {
     headers: {
       Authorization: `Bearer ${process.env.SECRET}`,
@@ -45,4 +45,8 @@ exports.markConversationAsAnswered = (req, res) => {
         console.log(error);
       });
   }
+};
+
+exports.keepServerAlive = (req, res) => {
+  res.send("Server running...");
 };
