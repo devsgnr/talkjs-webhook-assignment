@@ -50,5 +50,5 @@ exports.markConversation = (req, res) => {
 };
 
 exports.keepServerAlive = (req, res) => {
-  res.send("Server running...");
+  res.json("Server running...");
 };
