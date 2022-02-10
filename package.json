@@ -1,7 +1,7 @@
 {
-  "name": "nsns-voting-api",
+  "name": "talk-js-webhook",
   "version": "1.0.1",
-  "description": "eVoting Express.js API",
+  "description": "Chat API Webhook",
   "main": "index.js",
   "author": "Emmanuel Watila",
   "license": "MIT",
