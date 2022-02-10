@@ -1,52 +1,56 @@
 const axios = require("axios");
 require("dotenv").config();
 
-exports.markConversationAsAnswered = (req, res) => {
-  const conversation_id = req.body.data.conversation.id;
-
+exports.markConversation = (req, res) => {
   let config = {
     headers: {
       Authorization: `Bearer ${process.env.SECRET}`,
     },
   };
 
+  const conversation_id = req.body.data.conversation.id;
   const conversation_url = `https://api.talkjs.com/v1/${process.env.APP_ID}/conversations/${conversation_id}`;
 
   if (req.body.data.sender.role === "default") {
-    axios
-      .put(
-        conversation_url,
-        {
-          custom: { answered: "false" },
-        },
-        config
-      )
-      .then((res) => {
-        console.log("done");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const custom = { custom: { answered: "false" } };
+
+    try {
+      axios
+        .put(conversation_url, custom, config)
+        .then((res) => {
+          console.log("done");
+          res.send("done");
+        })
+        .catch((error) => {
+          console.log(error);
+          res.send("done");
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   if (req.body.data.sender.role === "admin") {
-    axios
-      .put(
-        conversation_url,
-        {
-          custom: { answered: "true" },
-        },
-        config
-      )
-      .then((res) => {
-        console.log("done");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const custom = { custom: { answered: "true" } };
+    try {
+      axios
+        .put(conversation_url, custom, config)
+        .then((res) => {
+          console.log("done");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.error(error);
+    }
   }
 };
 
 exports.keepServerAlive = (req, res) => {
-  res.send("Server running...");
+  try {
+    res.send("Server running...");
+  } catch (error) {
+    console.log(error);
+  }
 };
