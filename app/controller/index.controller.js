@@ -48,9 +48,5 @@ exports.markConversation = (req, res) => {
 };
 
 exports.keepServerAlive = (req, res) => {
-  try {
-    res.send("Server running...");
-  } catch (error) {
-    console.log(error);
-  }
+  res.send("Server running...");
 };
