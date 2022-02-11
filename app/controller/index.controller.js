@@ -18,7 +18,7 @@ exports.markConversation = (req, res) => {
       axios
         .put(conversation_url, custom, config)
         .then((res) => {
-          console.log(res);
+          console.log(res.data);
         })
         .catch((error) => {
           console.log(error);
@@ -34,7 +34,7 @@ exports.markConversation = (req, res) => {
       axios
         .put(conversation_url, custom, config)
         .then((res) => {
-          console.log(res);
+          console.log(res.data);
         })
         .catch((error) => {
           console.log(error);
