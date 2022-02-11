@@ -1,17 +1,17 @@
-# Voting API
-## This is a exact demo replica of a small full stack client project
+# TalkJS Webhook Assignment
 
----------------------------------------------------------------------------------------------------
-## Written in 
+---
+
+## Written in
+
 - JavaScript
 - Express.js
 
 ## Packages Used
+
 - body-parser
 - cors
-- emailjs
+- axios
 - express
 - mongoose
-- nodemailer
-- nodemailer-smtp-transport
 - nodemon
