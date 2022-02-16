@@ -10,26 +10,9 @@ exports.markConversation = (req, res) => {
 
   const conversation_id = req.body.data.conversation.id;
   const conversation_url = `https://api.talkjs.com/v1/${process.env.APP_ID}/conversations/${conversation_id}`;
+  let custom;
 
-  if (req.body.data.sender.role === "default") {
-    const custom = { custom: { answered: "false" } };
-
-    try {
-      axios
-        .put(conversation_url, custom, config)
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  if (req.body.data.sender.role === "admin") {
-    const custom = { custom: { answered: "true" } };
+  const mark = (custom) => {
     try {
       axios
         .put(conversation_url, custom, config)
@@ -42,6 +25,14 @@ exports.markConversation = (req, res) => {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  if (req.body.data.sender.role === "admin") {
+    custom = { custom: { answered: "true" } };
+    mark(custom);
+  } else if (req.body.data.sender.role === "default") {
+    custom = { custom: { answered: "false" } };
+    mark(custom);
   }
 };
 
